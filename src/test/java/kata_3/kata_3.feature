@@ -25,9 +25,12 @@ Feature: kata 3 features
     * print getFeature.responseHeaders['Content-Type']
 
   Scenario: call get feature with id
-    * def myValue = 250
-    * def getFeature = call read('classpath:callers/requestCollection.feature@getFeature'){id: myValue}
+    * def myValue = 251
+    * def getFeature = call read('classpath:callers/requestCollection.feature@getFeature'){id: '#(myValue)'}
     * match getFeature.response.id == myValue
+    * def model = read('classpath:data/schema.json')
+    * match getFeature.response == model
+
 
 
 

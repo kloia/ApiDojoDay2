@@ -32,20 +32,12 @@ Feature: kata 3 features
     * match getFeature.response == model
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  Scenario: request chaining
+    * def model = read('classpath:data/model.json')
+    * def postFeature = call read('classpath:callers/requestCollection.feature@postFeature') model
+    * def id = postFeature.response.id
+    * def getFeature = call read('classpath:callers/requestCollection.feature@getFeature'){id: '#(id)'}
+    * match model == getFeature.response
+    * match model.id == getFeature.response.id
+    * def schema = read('classpath:data/schema.json')
+    * match getFeature.response == schema

@@ -15,7 +15,9 @@ Feature: kata 3 features
     * print getBirthday.age
 
 
-  Scenario:
-    # call post feature
-    # print response
-    # verify status code
+  Scenario: call post feature
+    * def model = read('classpath:data/model.json')
+    * def getFeature = call read('classpath:callers/requestCollection.feature') model
+   # * print getFeature.response
+    * match getFeature.responseStatus == 200
+    * print getFeature.responseHeaders['Content-Type']

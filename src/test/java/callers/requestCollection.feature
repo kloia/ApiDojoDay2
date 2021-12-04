@@ -1,4 +1,11 @@
-Feature:
+Feature: crud reqeusts
+  Background:
+    * url baseUrl
 
-  Scenario:
-    #post model.json
+  Scenario: create one pet
+    * print __arg
+    * path 'pet'
+    * request model
+    * method POST
+
+

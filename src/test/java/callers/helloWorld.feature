@@ -1,3 +1,4 @@
+@ignore
 Feature: hello world feature
 
   @tag=helloWorld

@@ -1,3 +1,4 @@
+@ignore
 Feature: crud reqeusts
   Background:
     * url baseUrl

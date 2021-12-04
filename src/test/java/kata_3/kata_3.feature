@@ -5,16 +5,16 @@ Feature: kata 3 features
     * print 'hello world'
     * print 10 - 15
 
-
+@smoke
    Scenario: call other feature
-     * def getFeature = call read('classpath:callers/helloWorld.feature')
+     * def getFeature = call read('classpath:callers/helloWorld.feature@tag=helloWorld')
 
-
+@regression
   Scenario: call age feature
     * def getBirthday = call read('classpath:callers/helloWorld.feature@birthdayCalculate'){birthday: 1992, name: "selcuk"}
     * print getBirthday.age
 
-
+@smoke
   Scenario: call post feature
     * def model = read('classpath:data/model.json')
     # call token
@@ -23,7 +23,7 @@ Feature: kata 3 features
    # * print getFeature.response
     * match getFeature.responseStatus == 200
     * print getFeature.responseHeaders['Content-Type']
-
+@load
   Scenario: call get feature with id
     * def myValue = 251
     * def getFeature = call read('classpath:callers/requestCollection.feature@getFeature'){id: '#(myValue)'}

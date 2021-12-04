@@ -3,9 +3,13 @@ Feature: crud reqeusts
     * url baseUrl
 
   Scenario: create one pet
-    * print __arg
     * path 'pet'
     * request model
     * method POST
+    @getFeature
+  Scenario: get callers
+    * path 'pet', id
+    * method GET
+
 
 
